@@ -1,0 +1,96 @@
+.img
+{
+    width: 45vw;
+    height: 100vh;
+}
+
+.main
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.aside
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+}
+
+.h1
+{
+    font-size: 4.5rem;
+    font-family: "Fredoka", sans-serif;
+    text-align: center;
+}
+
+.form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.camp_form
+{
+    display: flex;
+    flex-direction: column;
+    gap: .5vw;
+}
+
+
+.label
+{
+    font-family: "Fredoka", sans-serif;
+
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: black;
+}
+
+
+.input
+{
+    width: 30vw;
+    height: 7vh;
+    border-radius: 1vw;
+    padding: 2% 0% 2% 2.5%;
+    box-shadow: .5px 5px 5px rgba(0, 0, 0, 0.1);
+    color: var(--cinza);
+    font-family: "Fredoka", sans-serif;
+
+    font-size: 1.3rem;
+}
+
+.a 
+{
+    font-family: "Fredoka", sans-serif;
+
+    font-size: 1.6rem;
+    color: var(--marrom);
+    padding-left: 55%;
+}
+
+.button
+{
+    font-family: "Fredoka", sans-serif;
+
+    font-size: 2rem;
+    font-family: 900;
+    font-weight: 600;
+    text-align: center;
+    background-color: var(--amarelo-botao);
+    width: 30vw;
+    height: 7.5vh;
+    border-radius: 1vw;
+    border: none;
+    
+}
+
+.button:hover
+{
+    cursor: pointer;
+}

@@ -1,0 +1,15 @@
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root
+{
+    --cinza: #888888;
+    --amarelo-botao: #FFA300;
+    --marrom: #451201;
+    --cinza: #777777;
+}
