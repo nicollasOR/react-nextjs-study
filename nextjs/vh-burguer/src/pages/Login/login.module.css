@@ -1,96 +1,94 @@
-.img
-{
-    width: 45vw;
-    height: 100vh;
-}
-
-.main
-{
+.main{
+    min-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 0.8fr;
+    background-color: var(--fundo-claro);
 }
 
+.main img{
+    max-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
 
-.aside
-{
+.campo_login{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5vw;
+    gap: 30px;
 }
 
-.h1
-{
-    font-size: 4.5rem;
-    font-family: "Fredoka", sans-serif;
+.campo_login h1{
+    width: 100%;
+    max-width: 520px;
     text-align: center;
+    font-weight: 500;
+    color: var(--laranja-destaque);
+    font-size: var(--tamanho-titulo);
 }
 
-.form
-{
+.formulario{
+    width: 65%;
+}
+
+.campo_form{
     display: flex;
     flex-direction: column;
-    gap: 2vw;
+    gap: 10px;
+    margin-bottom: 22px;
 }
 
-.camp_form
-{
-    display: flex;
-    flex-direction: column;
-    gap: .5vw;
+.campo_form label{
+    font-weight: 500;
+    color: var(--fonte-ecura);
 }
 
+.campo_form input{
+    height: 45px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    padding: 0 18px;
+    /* retomada pading: */
+    /* padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 
-.label
-{
-    font-family: "Fredoka", sans-serif;
-
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: black;
+    padding: 5px 10px;
+    padding: 5px 10px 5px 10px; */
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.10);
+    outline: none;
+    font-size: 16px;
 }
 
-
-.input
-{
-    width: 30vw;
-    height: 7vh;
-    border-radius: 1vw;
-    padding: 2% 0% 2% 2.5%;
-    box-shadow: .5px 5px 5px rgba(0, 0, 0, 0.1);
-    color: var(--cinza);
-    font-family: "Fredoka", sans-serif;
-
-    font-size: 1.3rem;
+.esq_senha{
+    display: block;
+    text-align: right;
+    margin: 6px 0 26px;
+    text-decoration: none;
+    color: var(--vinho);
+    font-weight: 500;
 }
 
-.a 
-{
-    font-family: "Fredoka", sans-serif;
-
-    font-size: 1.6rem;
-    color: var(--marrom);
-    padding-left: 55%;
-}
-
-.button
-{
-    font-family: "Fredoka", sans-serif;
-
-    font-size: 2rem;
-    font-family: 900;
-    font-weight: 600;
-    text-align: center;
-    background-color: var(--amarelo-botao);
-    width: 30vw;
-    height: 7.5vh;
-    border-radius: 1vw;
+.formulario button{
+    width: 100%;
+    height: 52px;
     border: none;
-    
+    border-radius: 10px;
+    background: var(--laranja-destaque);
+    color: var(--vinho);
+    font-weight: 700;
+    cursor: pointer;
 }
 
-.button:hover
-{
-    cursor: pointer;
+@media (max-width: 1000px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    .main img {
+        display: none;
+    }
 }

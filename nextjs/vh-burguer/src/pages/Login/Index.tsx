@@ -1,4 +1,3 @@
-import { Fragment } from "react/jsx-runtime";
 import styles from "./login.module.css"
 
 const Login = () => {
@@ -6,22 +5,22 @@ const Login = () => {
 
         <>
             <main className={styles.main}>
-                <img src="/imgs/hamburguer_login.png" className={styles.img} alt="" />
-                <aside className="aside">
-                    <h1 className={styles.h1}>LOGIN</h1>
-                    <form action="" className={styles.form}>
-                        <div className={styles.camp_form}>
-                            <label htmlFor="" className={styles.label}>E-mail</label>
-                            <input type="text" placeholder="email@exemplo.com" className={styles.input} name="" id="" />
+                <img src="../imgs/hamburguer_login.png" alt="Hambúrguer com ingredientes flutuando em camadas sobre fundo escuro."/>
+                <div className={styles.campo_login}>
+                    <h1>Login</h1>
+                    <form className={styles.formulario}>
+                        <div className={styles.campo_form}>
+                            <label htmlFor="email">E-mail</label>
+                            <input type="text" name="email" placeholder="email@exemplo.com" required />
                         </div>
-                        <div className={styles.camp_form}>
-                            <label htmlFor="" className={styles.label}>Senha</label>
-                            <input type="text" placeholder="********" className={styles.input} name="" id=""  required/>
+                        <div className={styles.campo_form}>
+                            <label htmlFor="senha">Senha</label>
+                            <input type="password" name="senha" placeholder="*******" required />
                         </div>
-                        <a href="chatgpt.com" className={styles.a}>Esqueceu sua Senha?</a>
-                        <button className={styles.button}>Entrar</button>
+                        <a className={styles.esq_senha} href="">Esqueceu sua senha?</a>
+                        <button>Entrar</button>
                     </form>
-                </aside>
+                </div>
             </main>
         </>
 
