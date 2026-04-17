@@ -1,0 +1,41 @@
+                <ul id={styles.hamburgueres_lado_sup}>
+                <li className={styles.lista_cardapios}>
+                    <img src="../imgs/" alt="" />
+                    <h4>Monster</h4>
+                    <p>Hambúrguer brutal, suculento e exageradamente saboroso.</p>
+                    <span>R1 35,00</span>
+                </li>
+                <li className={styles.lista_cardapios}>
+                    <img src="../imgs/" alt="" />
+                    <h4>Monster</h4>
+                    <p>Hambúrguer brutal, suculento e exageradamente saboroso.</p>
+                    <span>R1 35,00</span>
+                    </li>
+                <li className={styles.lista_cardapios}>                    
+                    <img src="../imgs/" alt="" />
+                    <h4>Monster</h4>
+                    <p>Hambúrguer brutal, suculento e exageradamente saboroso.</p>
+                    <span>R1 35,00</span>
+                    </li>
+                </ul>
+                <ul id={styles.hamburgueres_lado_inf}>
+                <li className={styles.lista_cardapios}>                    
+                    <img src="../imgs/" alt="" />
+                    <h4>Monster</h4>
+                    <p>Hambúrguer brutal, suculento e exageradamente saboroso.</p>
+                    <span>R1 35,00</span>
+                    </li>
+                <li className={styles.lista_cardapios}>                    
+                    <img src="../imgs/" alt="" />
+                    <h4>Monster</h4>
+                    <p>Hambúrguer brutal, suculento e exageradamente saboroso.</p>
+                    <span>R1 35,00</span>
+                    </li>
+                <li className={styles.lista_cardapios}>                    
+                    <img src="../imgs/" alt="" />
+                    <h4>Monster</h4>
+                    <p>Hambúrguer brutal, suculento e exageradamente saboroso.</p>
+                    <span>R1 35,00</span>
+                    </li>
+                </ul>
+                </main>
