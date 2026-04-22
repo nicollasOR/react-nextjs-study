@@ -1,3 +1,42 @@
-#lista_cardapios{
 
+#botoes{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+
+#botoes button{
+
+    border-radius: .5vw;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--tamanho-texto-btn);
+}
+
+#botoes button, #botoes_adm button{
+    width: 20%;
+    height: 5.5vh;
+    border: none;
+    border-radius: .5vw;
+}
+
+#botoes_adm{
+    display: inline-flex;
+    gap: 2vw;
+    white-space: nowrap;
+}
+
+#botoes #editar{
+    width: 3vw;
+    height: 3vh;
+}
+
+#botoes button:hover{
+    transition: 0.2s ease-in-out;
+    background-color: rgba(255, 163, 0, .9);
+    cursor: pointer;
 }

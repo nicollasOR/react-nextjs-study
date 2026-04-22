@@ -58,12 +58,14 @@
 #destaques{
     background-color: var(--fundo-escuro);
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: column;
     align-items: center;
+    justify-content: center;
     margin: 5% 0;
     padding: 1% 15%;
     height: 66vh;
     width: 100%;
+    gap: 4vw;
 }
 
 #lado_esq{
@@ -75,7 +77,7 @@
     flex-direction: column;
     justify-content: end;
     height: 70%;
-    width: 60%;
+    width: 25vw;
     color: var(--fundo-claro);
     padding-bottom: 2%;
     padding-left: 2%;
@@ -87,8 +89,39 @@
     font-size: 25px;
 }
 
+#lado_dir{
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    height: 70%;
+    width: 20vw;
+    
+}
 
+#lado_dir article{
+    height: 50%;
+    width: 100%; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 1vw;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    color: var(--fundo-claro); 
+    padding-bottom: 2%;
+    padding-right: 2%;
+}
 
+#lado_dir #lado_super{
+    background-image: url("/imgs/muito_bacon.png");
+}
+
+#lado_dir #lado_infer{
+    
+    background-image: url("/imgs/super_combos.png");
+
+}
 
 
 
@@ -107,7 +140,7 @@
 
 #filtro{
     display: flex;
-    width: 183px;
+    width: 13px;
     background-color: var(--laranja-destaque);
     justify-content: space-around;
     align-items: center;
@@ -115,6 +148,59 @@
     padding: .4% 1%;
     border-radius: .2vw;
 }
+
+
+
+#unidades{
+    width: 100%;
+    height: 65vh;
+    background-color: var(--fundo-escuro);
+    margin: 5% 0 0 0 ;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    padding: 1% 5%;
+    
+
+}
+
+#unidades div{
+    background-image: url("/imgs/unidade.jpeg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    border-radius: 1vw;
+
+    width: 80%;
+    height: 80%;
+}
+#unidades img{
+    width: 50%;
+    height: 80%;
+    object-fit: contain;
+    border-radius: 5vw;
+
+}
+
+#unidades #textos_direita{
+    color: var(--fundo-claro);
+}
+
+#textos_direita h5{
+    font-size: 30px;
+}
+#textos_direita li{
+    font-size: 28px;
+}
+
+#cardapio{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    gap: 50px;
+}
+
+
 
 
 

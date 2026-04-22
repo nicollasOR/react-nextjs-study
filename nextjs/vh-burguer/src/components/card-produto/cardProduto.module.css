@@ -1,0 +1,15 @@
+
+.lista_cardapios{
+    display: flex;
+    flex-direction: column;
+    width: 12vw;
+    height: 30vh;
+    border: 1px solid black;
+    margin-bottom: 10vh;
+
+}
+
+
+#ex_card{
+border-radius: 1vw;
+}
