@@ -1,4 +1,4 @@
-
+/* 
 .lista_cardapios{
     display: flex;
     flex-direction: column;
@@ -12,4 +12,78 @@
 
 #ex_card{
 border-radius: 1vw;
+} */
+
+
+ .lista_cardapios {
+    list-style: none;
+    width: 260px;
+    border-radius: 1vw;
+    overflow: hidden;
+    background-color: var(--fundo-branco)
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.15); */
+    /* font-family: Arial, sans-serif; */
+}
+
+/* Imagem */
+.ex_card {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Nome */
+.lista_cardapios h4 {
+    background-color: #5a1d0c;
+    color: var(--laranja-destaque);
+    text-align: center;
+    padding: 12px;
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+/* Descrição */
+.lista_cardapios p {
+    padding: 16px;
+    margin: 0;
+    text-align: center;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+/* Área de botões */
+.botoes {
+    background-color: #5a1d0c;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+/* Preço */
+#botoes span {
+    color: var(--laranja-destaque);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Botões */
+#botoes button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Ícones */
+.icone_botao {
+    pointer-events: none;
+}
+
+/* Hover efeito */
+#botoes button:hover {
+    transform: scale(1.1);
+    color: var(--laranja-destaque);
 }
