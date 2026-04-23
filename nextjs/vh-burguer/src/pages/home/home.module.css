@@ -1,4 +1,11 @@
-#banner
+#main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner
 {
     margin: 5% 10%;
     display: flex;
@@ -7,13 +14,13 @@
     align-items: center;
 }
 
-#banner h1{
+.banner h1{
     color: var(--laranja-destaque);
     font-size: 80px;
     font-size: clamp(40px, 80px, 80px);
 }
 
-#banner img{
+.banner img{
     width: 830px;
 }
 
@@ -55,7 +62,7 @@
 }
 
 
-#destaques{
+.destaques{
     background-color: var(--fundo-escuro);
     display: grid;
     grid-auto-flow: column;
@@ -124,35 +131,7 @@
 }
 
 
-
-#cardapio
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#h2
-{
-    font-size: 70px;
-    color: var(--laranja-destaque);
-    font-weight: 400;
-}
-
-#filtro{
-    display: flex;
-    width: 13px;
-    background-color: var(--laranja-destaque);
-    justify-content: space-around;
-    align-items: center;
-    gap: 20px;
-    padding: .4% 1%;
-    border-radius: .2vw;
-}
-
-
-
-#unidades{
+.unidades{
     width: 100%;
     height: 65vh;
     background-color: var(--fundo-escuro);
@@ -164,7 +143,7 @@
     
 
 }
-#unidades #img{
+.unidades #img{
     background-image: url("/imgs/unidade.jpeg");
     background-size: cover;
     background-position: center;
@@ -177,12 +156,12 @@
     
 }
 
-#unidades #img:hover{
+.unidades #img:hover{
     transform: scale(1.05);
     cursor: pointer;
 }
 
-#unidades #textos_direita{
+.unidades #textos_direita{
     display: flex;
     flex-direction: column;
     gap: 1vw;
@@ -199,14 +178,6 @@
 
 
 
-#cardapio{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    gap: clamp(2vw, 50px, 4vw);
-    margin: 0 0 5% 0;
-}
 
 
 
