@@ -9,7 +9,8 @@ const Home = () => {
         <>
         <Header/>
         <main>
-            {/* <section id={styles.banner}>
+            {
+            /* <section id={`styles.banner} style_guide`}>
                 <h1>Bem-vindo ao VH Burguer</h1>
                 <img src="../imgs/foto_de_hamburgueres.png"  alt="" />
                 <div id={styles.nav_links}>
@@ -18,7 +19,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section id={styles.destaques}>
+            <section id={`${styles.destaques} style_guide`}>
             <article id={styles.lado_esq}>
                 <p>Os queridinhos da galera</p>
                 <h3>MAIS PEDIDOS</h3>
@@ -41,8 +42,8 @@ const Home = () => {
 
 
             </section>
+            {/* <section id={`${styles.unidades} style_guide`}> */}
             <section id={styles.unidades}>
-                {/* <img src="../imgs/unidade.jpeg" alt="" /> */}
                 <div id={styles.img}></div>
                 <ul id={styles.textos_direita}>
                     <h5>NOSSAS UNIDADES</h5>

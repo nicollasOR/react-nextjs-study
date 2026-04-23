@@ -125,7 +125,8 @@
 
 
 
-#cardapio{
+#cardapio
+{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,41 +164,48 @@
     
 
 }
-
-#unidades div{
+#unidades #img{
     background-image: url("/imgs/unidade.jpeg");
-    background-repeat:no-repeat;
     background-size: cover;
-    border-radius: 1vw;
-
-    width: 80%;
-    height: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 1/1;
+    width: 35vw;
+    height: clamp(25vw, 50vh, 40vw);
+    border-radius: .5vw;
+    transition: transform 0.6s ease; 
+    
 }
-#unidades img{
-    width: 50%;
-    height: 80%;
-    object-fit: contain;
-    border-radius: 5vw;
 
+#unidades #img:hover{
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 #unidades #textos_direita{
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
     color: var(--fundo-claro);
 }
 
 #textos_direita h5{
     font-size: 30px;
+    margin-bottom: 10%;
 }
 #textos_direita li{
     font-size: 28px;
 }
+
+
 
 #cardapio{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-self: center;
-    gap: 50px;
+    gap: clamp(2vw, 50px, 4vw);
+    margin: 0 0 5% 0;
 }
 
 
@@ -206,21 +214,21 @@
 
 @media (max-width: 768px)
 {
+    #unidades
+    {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
 
+    #unidades #img{
+        display: none;
+    }
 }
 
 
 
-/* 
 
-            <section id={styles.banner}>
-                <h1>Bem-vindo ao VH Burguer</h1>
-                <img src="../imgs/foto_de_hamburgueres.png" alt="" />
-                <div id={styles.nav_links}>
-                <a href="">Chamar atendente</a>
-                <a href="">Ver cardápio</a>
-                </div>
-
-*/
 
 
