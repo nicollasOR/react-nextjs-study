@@ -105,3 +105,9 @@ border-radius: 1vw;
     transform: scale(1.5);
     color: color-mix(in srgb, var(--laranja-destaque) 70%, white);
 }
+
+
+@media (max-width:768px)
+{
+    
+}
