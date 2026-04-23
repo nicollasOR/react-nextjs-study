@@ -1,53 +1,64 @@
 
 #botoes{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    gap: 30vw;
 }
-
 
 #botoes button{
-
-    border-radius: .5vw;
+    display: flex;
     border: none;
-    display: inline-flex;
+    border-radius: .5vw;
     align-items: center;
     justify-content: center;
-    font-size: var(--tamanho-texto-btn);
+    width: 6vw;
+    /* height: 5.5vh; */
+    height: clamp(2.6vw, 5.5vh, 3vw);    
 }
 
-#botoes button, #botoes_adm button{
-    width: 20%;
-    height: 5.5vh;
-    border: none;
-    border-radius: .5vw;
+#botoes :first-child{
+
+    display: flex;
+    gap: .5vw;
+    font-size: clamp(1vw, 0.95rem, 1.2vw);
+}
+
+#botoes :first-child img{
+    width: 1.5vw;
 }
 
 #botoes_adm{
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     gap: 2vw;
     white-space: nowrap;
 }
 
-#botoes #editar{
-    width: 3vw;
-    height: 3vh;
+#botoes_adm button{
+    width: 12vw;
+    font-size: clamp(1vw, 0.95rem, 1.2vw);
+
+}
+
+#botoes button{
+    /* transition: transform 0.5s ease, color 0.5s ease;  */
+    transition: .25s ease-in-out;
+
 }
 
 #botoes button:hover{
-    transition: 0.2s ease-in-out;
-    background-color: rgba(255, 163, 0, .9);
     cursor: pointer;
+    background-color: var(--laranja-destaque);
 }
 
-#hamburgueres_lado_sup
-{
+
+
+
+#hamburgueres_lado_sup{
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 3vw;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vw;
 }
-
-/* ee */
-
 

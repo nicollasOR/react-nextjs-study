@@ -4,12 +4,9 @@ import styles from './listaProduto.module.css'
 const ListaProduto = () => {
     return (
         <>
-
+        
                 
                 <div id={styles.botoes}>
-                {/* <h3>Filtrar</h3>
-                <img src="../imgs/edicoesF.svg" alt="" /> */}
-
                 <button> Filtrar <img src="../imgs/edicoesF.svg" id={styles.editar}  alt="" /></button>
                 <div id={styles.botoes_adm}>
                 <button> Todas as promoções              </button>
@@ -22,7 +19,6 @@ const ListaProduto = () => {
                 <CardProduto/>
                 <CardProduto/>
             </ul>
-                {/* eee */}
 
 
         </>
