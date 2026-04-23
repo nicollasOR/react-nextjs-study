@@ -1,43 +1,21 @@
-/* 
-.lista_cardapios{
-    display: flex;
-    flex-direction: column;
-    width: 12vw;
-    height: 30vh;
-    border: 1px solid black;
-    margin-bottom: 10vh;
-
-}
-
-
-#ex_card{
-border-radius: 1vw;
-} */
-
-
  .lista_cardapios {
     list-style: none;
-    /* width: 260px; */
-    /* width: clamp(13vw, 260px, 15vw); */
-    width: 20vw;
+
+    width: 100%;
 
     border-radius: 1vw;
     overflow: hidden;
     background-color: var(--fundo-branco);
     box-shadow: 0 4px 12px rgba(0,0,0,0.45);
-    /* font-family: Arial, sans-serif; */
 }
 
-/* Imagem */
 .ex_card {
     width: 100%;
-    /* height: clamp(180px, 20vh, 20vh); */
     height: auto;
     display: block;
     
 }
 
-/* Nome */
 .lista_cardapios h4 {
     background-color: #5a1d0c;
     color: var(--laranja-destaque);
@@ -47,7 +25,6 @@ border-radius: 1vw;
     font-size: clamp(2vw, 2rem, 2.2vw);
 }
 
-/* Descrição */
 .lista_cardapios p {
     padding: 10% 15%;
     text-overflow: ellipsis;
@@ -60,18 +37,15 @@ border-radius: 1vw;
     font-size: clamp(0.95rem, 1vw, 1.2vw);
 }
 
-/* Área de botões */
 .botoes {
     background-color: #5a1d0c;
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* gap; */
     justify-content: space-around;
     padding: 8% 4%;
 }
 
-/* Preço */
 .botoes span {
     color: var(--laranja-destaque);
     font-weight: bold;
@@ -79,19 +53,16 @@ border-radius: 1vw;
 
 }
 
-/* Botões */
 .botoes button {
     background: transparent;
     border: none;
     cursor: pointer;
     color: white;
-    /* font-size: 1.5rem; ee*/
+    /* font-size: 1.5rem; */
     transition: transform 0.2s ease, color 0.2s ease; 
 }
 
-/* Ícones */
 .icone_botao {
-    pointer-events: none;
     font-size: 1.5vw;
 }
 
@@ -100,7 +71,6 @@ border-radius: 1vw;
     color: var(--laranja-destaque);
 }
 
-/* Hover efeito */
 .botoes button:hover {
     transform: scale(1.5);
     color: color-mix(in srgb, var(--laranja-destaque) 70%, white);
