@@ -13,6 +13,14 @@
     --vinho: #451201;
     --fonte-escura: #000000;
 
+  /* 
+  --fundo-claro-rgb: rgb(241, 241, 241);
+  --fundo-escuro-rgb: rgb(35, 33, 34);
+  --laranja-destaque-rgb: rgb(255, 163, 0);
+  --vinho-rgb: rgb(69, 18, 1);
+  --fonte-escura-rgb: rgb(0, 0, 0); 
+  */
+
     --tamanho-titulo: 50px;
     --tamanho-texto-btn: 17px;
     --tamanho-p: 16px;

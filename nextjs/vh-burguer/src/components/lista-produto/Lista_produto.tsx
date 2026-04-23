@@ -19,6 +19,8 @@ const ListaProduto = () => {
 
             <ul id={styles.hamburgueres_lado_sup}>
                 <CardProduto/>
+                <CardProduto/>
+                <CardProduto/>
             </ul>
                 
 
