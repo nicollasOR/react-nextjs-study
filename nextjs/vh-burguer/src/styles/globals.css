@@ -6,12 +6,18 @@
     font-family: var(--font-fredoka);
 }
 
+body{
+    background-color: var(--fundo-claro);
+
+}
+
 :root{
     --fundo-claro: #f1f1f1;
     --fundo-escuro: #232122;
     --laranja-destaque: #FFA300;
     --vinho: #451201;
     --fonte-escura: #000000;
+    --box-shadow: 0 4px 12px rgba(0,0,0,0.45);
 
   /* 
   --fundo-claro-rgb: rgb(241, 241, 241);
