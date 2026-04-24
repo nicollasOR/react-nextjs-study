@@ -6,7 +6,7 @@
     border-radius: 1vw;
     overflow: hidden;
     background-color: var(--fundo-branco);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+    box-shadow: var(--box-shadow)
 }
 
 .ex_card {
