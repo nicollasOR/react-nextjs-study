@@ -9,8 +9,7 @@ const Home = () => {
         <>
         <Header/>
         <main id={styles.main}>
-            {
-            /* <section className={`styles.banner} style_guide`}>
+             <section className={`${styles.banner} layout_guide`}>
                 <h1>Bem-vindo ao VH Burguer</h1>
                 <img src="../imgs/foto_de_hamburgueres.png"  alt="" />
                 <div id={styles.nav_links}>
@@ -19,7 +18,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className={`${styles.destaques} style_guide`}>
+            <section className={`${styles.destaques} layout_guide`}>
             <article id={styles.lado_esq}>
                 <p>Os queridinhos da galera</p>
                 <h3>MAIS PEDIDOS</h3>
@@ -34,11 +33,10 @@ const Home = () => {
                         <h3>SUPER COMBOS</h3>
                     </article>
                 </div>  
-            </section> */}
+            </section> 
                 <ListaProduto/>
 
-            <section id={`${styles.unidades} layout_guide`}>
-            {/* <section className={styles.unidades}> */}
+            <section className={`${styles.unidades} layout_guide`}>
                 <div id={styles.img}></div>
                 <ul  id={styles.textos_direita}>
                     <h5>NOSSAS UNIDADES</h5>
