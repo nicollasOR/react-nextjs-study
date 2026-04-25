@@ -5,19 +5,19 @@ const criarCategoria = () =>{
     return(
         <>
         <Sub_header/>
-        <main id={style.main} className="layout_guide">
+        <article id={style.main} className="layout_guide">
             <h1> Criar categoria</h1>
                 <form action="">
                     <div id={style.form}>
                     <label htmlFor="nome">Nome categoria</label>
-                    <input type="text" name='nome' placeholder='Premium'/>
+                    <input type="text" name='nome' required placeholder='Premium'/>
                     </div>
-                    <div id={style.enviar_botoes}>
+                    <div className={style.enviar_botoes}>
                         <button>Cancelar</button>
                         <button>Salvar</button>
                     </div>
                 </form>
-        </main>
+        </article>
         <Footer/>
         
         </>
