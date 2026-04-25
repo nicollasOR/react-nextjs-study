@@ -6,7 +6,6 @@
     width: 50%;
     height: 50vh;
     gap: 10%;
-    border: 1px solid black;
 
 }
 
@@ -33,6 +32,10 @@
     gap: 20%;
 }
 
+#form{
+    width: 100%;
+}
+
 #form label{
     align-self: flex-start;
     font-size: clamp(1vw, 1.3rem, 3vw);
@@ -49,11 +52,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: var(--box-shadow)
+    box-shadow: var(--box-shadow);
+    font-size: clamp(.9vw, .9rem, 4vw);
+    padding: 1% 0 1% 3%;
+
 
 }
 
-#enviar_botoes{
+.enviar_botoes{
     width: 100%;
     height: 40%;
     display: flex;
@@ -64,7 +70,7 @@
     padding: 0 2%;
 }
 
-#enviar_botoes button{
+.enviar_botoes button{
     width: 100%;
     height: clamp(2.8vw, 4vh, 6vw);
     border-radius: .4vw;
@@ -75,9 +81,15 @@
     border: none;
 }
 
-#enviar_botoes :first-child{
+.enviar_botoes :first-child{
     background-color: transparent;
     border: .2vw solid var(--laranja-destaque);
+    
+}
+
+
+button:hover{
+    cursor: pointer;
     
 }
 
