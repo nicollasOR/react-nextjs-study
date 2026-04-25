@@ -1,23 +1,22 @@
-#cardapio{
+.cardapio{
     width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-self: center;
+    align-items: center;
     gap: clamp(2vw, 50px, 4vw);
     margin: 0 0 5% 0;
 }
 
-
-#h2
+.cardapio h2
 {
-    font-size: 70px;
+    font-size: var(--tamanho-h2);
     color: var(--laranja-destaque);
     font-weight: 400;
 }
 
 
-#botoes{
+.botoes{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -25,56 +24,55 @@
     width: 100%;
 }
 
-#botoes button{
+.botoes button{
     display: flex;
     border: none;
     border-radius: .5vw;
     align-items: center;
     justify-content: center;
     width: 6vw;
-    /* height: 5.5vh; */
     height: clamp(2.6vw, 5.5vh, 3vw);    
 }
 
-#botoes :first-child{
+.botoes :first-child{
 
     display: flex;
     gap: .5vw;
     font-size: clamp(1vw, 0.95rem, 1.2vw);
 }
 
-#botoes :first-child img{
+.botoes :first-child img{
     width: 1.5vw;
 }
 
-#botoes_adm{
+.botoes_adm{
     display: flex;
     flex-direction: row;
     gap: 2vw;
     white-space: nowrap;
 }
 
-#botoes_adm button{
+.botoes_adm button{
     width: 12vw;
     font-size: clamp(1vw, 0.95rem, 1.2vw);
 
 }
 
-#botoes button{
-    /* transition: transform 0.5s ease, color 0.5s ease;  */
+.botoes button{
+    background-color: var(--laranja-destaque);
     transition: .25s ease-in-out;
 
 }
 
-#botoes button:hover{
+.botoes button:hover{
+    background-color: var(--fundo-escuro);
     cursor: pointer;
-    background-color: var(--laranja-destaque);
 }
 
 
 
 
-#hamburgueres_lado_sup{
+.hamburgueres_lado_sup{
     width: 100%;
     height: 100%;
     display: grid;
