@@ -19,6 +19,9 @@ body{
     --fonte-escura: #000000;
     --box-shadow: 0 4px 12px rgba(0,0,0,0.45);
 
+    --tamanho-h2: clamp(4.2vw, 4.8rem, 4.6vw);
+    --tamanho-label: ;
+
   /* 
   --fundo-claro-rgb: rgb(241, 241, 241);
   --fundo-escuro-rgb: rgb(35, 33, 34);
