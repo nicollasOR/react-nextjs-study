@@ -50,14 +50,7 @@
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 10px;
     padding: 0 18px;
-    /* retomada pading: */
-    /* padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
 
-    padding: 5px 10px;
-    padding: 5px 10px 5px 10px; */
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.10);
     outline: none;
     font-size: 16px;
