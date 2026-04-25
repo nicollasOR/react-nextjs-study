@@ -10,7 +10,6 @@
     gap: 20px;
 
 }
-
 #parte_sup
 {
     display: flex;
@@ -24,23 +23,18 @@
     flex-direction: row;
     gap: 20px;
 }
-
 #linha
 {
     background-color: var(--laranja-destaque);
     height: 1px;
     border: none;
 }
-
 #texto_footer
 {
     justify-self: center;
     color: var(--laranja-destaque);
     font-size: var(--tamanho-p);
 }
-
-
-
 
 @media (max-width: 768px) {
 
@@ -52,5 +46,7 @@
     justify-content: space-between;
     gap: 20px;
 }
+
+
 
 }
