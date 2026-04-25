@@ -10,7 +10,7 @@ const CardProduto = () => {
                 <li className={style.lista_cardapios}>
                     <img src="../imgs/hamburguerExemplo.png" className={style.ex_card} alt="" />
                     <h4>Monster</h4>
-                    <p>Hambúrguer brutal, suculento e exageradamente saboroso.</p>
+                    <p>Hambúrguer brutal, suculento e exageradamente saboroso. lorem</p>
                     <div className={style.botoes}>
                         <span>R$ 35,00</span>
                         <button><FontAwesomeIcon icon={faCircleInfo} className={style.icone_botao} /></button>

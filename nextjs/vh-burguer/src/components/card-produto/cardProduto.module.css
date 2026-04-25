@@ -1,7 +1,8 @@
  .lista_cardapios {
     list-style: none;
 
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
 
     border-radius: 1vw;
     overflow: hidden;
@@ -29,7 +30,6 @@
     padding: 10% 15%;
     text-overflow: ellipsis;
     line-height: 1.4;
-    /* white-space: nowrap; */
     height: auto;
     overflow: hidden;
     margin: 0;
@@ -58,7 +58,6 @@
     border: none;
     cursor: pointer;
     color: white;
-    /* font-size: 1.5rem; */
     transition: transform 0.2s ease, color 0.2s ease; 
 }
 
