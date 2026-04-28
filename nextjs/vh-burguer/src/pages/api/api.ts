@@ -1,6 +1,7 @@
 import axios from "axios";
                 
-const apiLocal = ""; // colocar o localhost do visualStudio 
+const apiLocal =  "https://localhost:7104/api/"; // colocar o localhost do visualStudio 
+// const apiLocal =  "http://localhost:3000/api"; // colocar o localhost do visualStudio 
 
 const apiRemota = "";
 
