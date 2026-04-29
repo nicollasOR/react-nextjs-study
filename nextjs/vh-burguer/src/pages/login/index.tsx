@@ -11,7 +11,7 @@ const Login = () => {
 
     const routes = useRouter();
 
-    const notificacao = (msg : string) => toast(msg);
+    const notificacao = (msg : string) => toast.success(msg);
     async function autenticar(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         try
@@ -23,8 +23,8 @@ const Login = () => {
 
             }, 2000)
         }
-        catch(e: any){
-            alert(e.message);
+            catch(error: any){
+            alert(error.message);
         }
     } 
     

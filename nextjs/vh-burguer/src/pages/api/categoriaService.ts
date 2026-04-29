@@ -1,14 +1,22 @@
-import { api } from './api'
+import { api } from "./api";
 export async function cadastrarCategoria(nome: string) {
-    try {
-        await api.post("Categoria", { nome });
-        console.log("eba deu certo");
+  try {
+    // const response =
+    await api.post("Categoria", { nome });
+    console.log("eba deu certo");
+  } 
+  catch (error: any) 
+  {
+    throw new Error(error.response.data);
+  }
+}
 
-    }
-
-    catch (error: any) {
-        throw new Error("Erro ao cadastrar");
-        console.log("eba deu certoferrpi");
-        
-    }
+export async function listarCategoriaService() {
+  try {
+    const response = await api.get("Categoria");
+    return response;
+  } 
+  catch (error: any) {
+    throw new Error(error.response.data);
+  }
 }

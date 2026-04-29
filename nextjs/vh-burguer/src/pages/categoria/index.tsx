@@ -3,17 +3,32 @@ import style from './categoria.module.css'
 import Sub_header from '@/components/sub-header/sub_header';
 import {cadastrarCategoria} from '../api/categoriaService';
 import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+
+
 const criarCategoria = () =>{
     const [categoria, setCategoria] = useState<string>("");
-    function cadastrar(e: React.FormEvent<HTMLFormElement>){
+
+    const notificacao = (msg: string) => toast.success(msg);
+    const error = (msg: string) => toast.error(msg);
+
+    async function cadastrar(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
-        cadastrarCategoria(categoria);
+        try{
+        await cadastrarCategoria(categoria);
+        notificacao("Cadastro realizado com sucesso");
+        }
 
         
+        catch(errorC: any)
+        {
+            error(errorC.message);
+        }
     };
 
     return(
         <>
+        <ToastContainer/>
         <Sub_header/>
         <article id={style.main} className="layout_guide">
             <h1> Criar categoria</h1>
