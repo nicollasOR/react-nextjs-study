@@ -1,11 +1,11 @@
 import { api } from "./api";
 
 type Produto ={
-    Nome: string,
-    Descricao: string,
-    Imagem: File | null,
-    Preco: string,
-    CategoriaIds:  number[]
+    nome: string,
+    descricao: string,
+    imagem: File | null,
+    preco: string,
+    categoriaIds:  number[]
 }
 
 export async function cadastrarProduto(dados: Produto){
@@ -14,13 +14,13 @@ export async function cadastrarProduto(dados: Produto){
 {
     const formData = new FormData();
 
-    formData.append("Nome", dados.Nome);
-    formData.append("Preco", dados.Preco);
-    formData.append("Descricao", dados.Descricao);
-    if(dados.Imagem)
-        formData.append("Imagem", dados.Imagem);
+    formData.append("Nome", dados.nome);
+    formData.append("Preco", dados.preco);
+    formData.append("Descricao", dados.descricao);
+    if(dados.imagem)
+        formData.append("Imagem", dados.imagem);
 
-    dados.CategoriaIds.forEach((id) => 
+    dados.categoriaIds.forEach((id) => 
     {
         formData.append("CategoriasIds", id.toString());
     })

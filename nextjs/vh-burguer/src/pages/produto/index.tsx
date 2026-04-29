@@ -32,8 +32,9 @@ const criarProduto = () => {
   async function Cadastrar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      const dados = {
-        Nome: Descricao,
+      const dados : Produto = {
+        nome
+        Descricao,
         Imagem,
         Preco,
         CategoriaIds : categoriaSelecionada,
