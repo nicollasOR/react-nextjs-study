@@ -14,6 +14,7 @@ export async function cadastrarCategoria(nome: string) {
 export async function listarCategoriaService() {
   try {
     const response = await api.get("Categoria");
+    console.log(response.data)
     return response;
   } 
   catch (error: any) {

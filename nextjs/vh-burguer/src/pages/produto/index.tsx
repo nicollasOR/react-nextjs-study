@@ -4,20 +4,22 @@ import Footer from "@/components/footer/footer";
 import Link from "next/link";
 import { toast, ToastContainer } from "react-toastify";
 import { useEffect, useState } from "react";
-import { api } from "../api/api";
 import { listarCategoriaService } from "../api/categoriaService";
 import { cadastrarProduto } from "../api/produtoService";
+import Toast from "@/components/toast/toast";
+import { notificacao, erro } from "@/utils/toast";
 
 interface Categoria {
-  CategoriaId: number;
-  Nome: string;
+  categoriaIds: number;
+  nome: string;
 }
 
 const criarProduto = () => {
+  const [nome, setNome] = useState<string>("");
   const [categorias, setCategoria] = useState<Categoria[]>([]);
-  const [descricaoVar, setDescricao] = useState<string>("");
-    const [valor, setValor] = useState<string>();
-    // const [valor, setValor] = useState<number>();
+  const [descricao, setDescricao] = useState<string>("");
+  const [preco, setPreco] = useState<string>("");
+  // const [valor, setValor] = useState<number>();
   const [img, setImg] = useState<File | null>(null);
   const [categoriaSelecionada, setCategoriaSelecionadas] = useState<number[]>(
     [],
@@ -26,24 +28,26 @@ const criarProduto = () => {
   async function listarCategoriaEmProduto() {
     const list = await listarCategoriaService();
     setCategoria(list.data);
-    console.log(list.data);
   }
+
+  
+  console.log(categorias);
 
   async function Cadastrar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      const dados : Produto = {
-        nome
-        Descricao,
-        Imagem,
-        Preco,
-        CategoriaIds : categoriaSelecionada,
+      const dados = {
+        Nome: nome,
+        Descricao: descricao,
+        Preco: preco,
+        Imagem: img,
+        categoriaIds: categoriaSelecionada,
       };
 
       await cadastrarProduto(dados);
-    } catch(error: any) {
-        console.log(error.message);
-
+      notificacao("Produto cadastrado");
+    } catch (error: any) {
+      console.log(error.message);
     }
   }
 
@@ -54,22 +58,22 @@ const criarProduto = () => {
 
   return (
     <>
+      <Toast />
       <Sub_header />
       <main id={styles.main} className="layout_guide">
         <h1>Criar produto</h1>
-        <form id={styles.formulario}>
+        <form id={styles.formulario} onSubmit={Cadastrar}>
           <div className={styles.inserir_dados}>
             <label htmlFor="nome">Nome do produto</label>
             <input type="text" name="nome" placeholder="BBQ Especial" />
           </div>
 
           <div className={styles.inserir_dados} id={styles.descricao}>
-            <label htmlFor="email">Descrição</label>
-            {/* <input
-              type="text"
-              placeholder="Hamburguer com molho barbecue defumado com cebola caramelizada."
-            /> */}
-            {/* <textarea value={descricaoVar} onChange={(e) => setDescricao(e.target.value)}> </textarea> */}
+            <label htmlFor="">Descrição</label>
+            <textarea
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
+            ></textarea>
           </div>
 
           <div className={styles.inserir_dados}>
@@ -80,7 +84,6 @@ const criarProduto = () => {
           <div className={styles.inserir_dados} id={styles.selectDiv}>
             <label htmlFor="categorias">Categoria</label>
             <select
-              multiple
               onChange={(e) =>
                 setCategoriaSelecionadas(
                   Array.from(e.target.selectedOptions).map((option) =>
@@ -90,11 +93,13 @@ const criarProduto = () => {
               }
               id={styles.select}
             >
+              
               {categorias.map((item) => (
-                <option value={item.CategoriaId} key={item.CategoriaId}>
-                  {item.Nome}
+                <option value={item.categoriaIds} key={item.categoriaIds}>
+                  {item.nome}
                 </option>
               ))}
+
             </select>
             <Link href="/login" id={styles.adicionarC}>
               Adicionar categoria

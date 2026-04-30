@@ -1,10 +1,10 @@
 import { api } from "./api";
 
 type Produto ={
-    nome: string,
-    descricao: string,
-    imagem: File | null,
-    preco: string,
+    Nome: string,
+    Descricao: string,
+    Imagem: File | null,
+    Preco: string,
     categoriaIds:  number[]
 }
 
@@ -14,11 +14,11 @@ export async function cadastrarProduto(dados: Produto){
 {
     const formData = new FormData();
 
-    formData.append("Nome", dados.nome);
-    formData.append("Preco", dados.preco);
-    formData.append("Descricao", dados.descricao);
-    if(dados.imagem)
-        formData.append("Imagem", dados.imagem);
+    formData.append("Nome", dados.Nome);
+    formData.append("Preco", dados.Preco);
+    formData.append("Descricao", dados.Descricao);
+    if(dados.Imagem)
+        formData.append("Imagem", dados.Imagem);
 
     dados.categoriaIds.forEach((id) => 
     {
@@ -30,7 +30,7 @@ export async function cadastrarProduto(dados: Produto){
 
 catch(error:any)
 {
-    throw new Error(error.msg)
+    throw new Error(error.response.data)
 }
 
 }
