@@ -37,12 +37,13 @@ const criarProduto = () => {
     e.preventDefault();
     try {
       const dados = {
-        Nome: nome,
-        Descricao: descricao,
-        Preco: preco,
-        Imagem: img,
+        nome: nome,
+        descricao: descricao,
+        preco: preco,
+        imagem: img,
         categoriaIds: categoriaSelecionada,
-      };
+        imagemURL: ""
+      }
 
       await cadastrarProduto(dados);
       notificacao("Produto cadastrado");
@@ -65,7 +66,7 @@ const criarProduto = () => {
         <form id={styles.formulario} onSubmit={Cadastrar}>
           <div className={styles.inserir_dados}>
             <label htmlFor="nome">Nome do produto</label>
-            <input type="text" name="nome" placeholder="BBQ Especial" />
+            <input type="text" onChange={(e) => setNome(e.target.value)} name="nome" placeholder="BBQ Especial" />
           </div>
 
           <div className={styles.inserir_dados} id={styles.descricao}>
@@ -78,7 +79,7 @@ const criarProduto = () => {
 
           <div className={styles.inserir_dados}>
             <label htmlFor="preco">Preço(R$)</label>
-            <input type="text" name="preco" placeholder="40,00" />
+            <input type="text" onChange={(e) => setPreco(e.target.value)} name="preco" placeholder="40,00" />
           </div>
 
           <div className={styles.inserir_dados} id={styles.selectDiv}>

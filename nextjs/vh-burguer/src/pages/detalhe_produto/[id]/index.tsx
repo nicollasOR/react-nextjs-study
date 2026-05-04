@@ -1,9 +1,43 @@
 import Sub_header from '@/components/sub-header/sub_header';
 import styles from './detalhe_produto.module.css'
 import Footer from '@/components/footer/footer';
+import { useState, useEffect } from 'react';
+import { ListarProdutoPorId } from '../../api/produtoService';
+import { useParams } from 'next/navigation';
+
+
+interface Produto{
+    produtoID: number,
+    nome: string,
+    descricao: string,
+    preco: number,
+    imagemURL: string,
+}
+
 const detalhe_Produto = () => {
 
+    const[produtos, setProdutos] = useState<Produto>();
+    const {id} = useParams()
+
+    async function listarProduto(){
+        try{
+            const response = await ListarProdutoPorId(Number(id))
+            console.log(response)
+            setProdutos(response)
+        }
+
+        catch(error:any)
+        {
+            console.log(error.data)
+        }
+    }
+
+    useEffect(() =>{
+        listarProduto();
+    }, [])
+
     return(
+
         <>
         <Sub_header/>
 

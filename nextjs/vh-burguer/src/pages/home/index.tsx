@@ -36,7 +36,7 @@ const Home = () => {
             </section> 
                 <ListaProduto/>
 
-            <section className={`${styles.unidades} layout_guide`}>
+            <section className={`${styles.unidades} layout_guide`} id="unidades">
                 <div id={styles.img}></div>
                 <ul  id={styles.textos_direita}>
                     <h5>NOSSAS UNIDADES</h5>
