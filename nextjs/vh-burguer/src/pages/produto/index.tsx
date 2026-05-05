@@ -10,7 +10,7 @@ import Toast from "@/components/toast/toast";
 import { notificacao, erro } from "@/utils/toast";
 
 interface Categoria {
-  categoriaIds: number;
+  categoriaId: number;
   nome: string;
 }
 
@@ -19,32 +19,27 @@ const criarProduto = () => {
   const [categorias, setCategoria] = useState<Categoria[]>([]);
   const [descricao, setDescricao] = useState<string>("");
   const [preco, setPreco] = useState<string>("");
-  // const [valor, setValor] = useState<number>();
   const [img, setImg] = useState<File | null>(null);
-  const [categoriaSelecionada, setCategoriaSelecionadas] = useState<number[]>(
-    [],
-  );
+  const [categoriaSelecionada, setCategoriaSelecionadas] = useState<number[]>([]);
+  const [imagemURL, setImagemURL] = useState<string>("");
 
   async function listarCategoriaEmProduto() {
     const list = await listarCategoriaService();
     setCategoria(list.data);
   }
 
-  
-  console.log(categorias);
-
   async function Cadastrar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       const dados = {
-        nome: nome,
-        descricao: descricao,
-        preco: preco,
+        nome,
+        descricao,
+        preco,
         imagem: img,
-        categoriaIds: categoriaSelecionada,
-        imagemURL: ""
-      }
+        categoriaId: categoriaSelecionada,
+      };
 
+      console.log(dados);
       await cadastrarProduto(dados);
       notificacao("Produto cadastrado");
     } catch (error: any) {
@@ -66,7 +61,13 @@ const criarProduto = () => {
         <form id={styles.formulario} onSubmit={Cadastrar}>
           <div className={styles.inserir_dados}>
             <label htmlFor="nome">Nome do produto</label>
-            <input type="text" onChange={(e) => setNome(e.target.value)} name="nome" placeholder="BBQ Especial" />
+            <input
+              type="text"
+              onChange={(e) => setNome(e.target.value)}
+              value={nome}
+              name="nome"
+              placeholder="BBQ Especial"
+            />
           </div>
 
           <div className={styles.inserir_dados} id={styles.descricao}>
@@ -79,12 +80,19 @@ const criarProduto = () => {
 
           <div className={styles.inserir_dados}>
             <label htmlFor="preco">Preço(R$)</label>
-            <input type="text" onChange={(e) => setPreco(e.target.value)} name="preco" placeholder="40,00" />
+            <input
+              type="text"
+              onChange={(e) => setPreco(e.target.value)}
+              value={preco}
+              name="preco"
+              placeholder="40,00"
+            />
           </div>
 
           <div className={styles.inserir_dados} id={styles.selectDiv}>
             <label htmlFor="categorias">Categoria</label>
             <select
+              multiple
               onChange={(e) =>
                 setCategoriaSelecionadas(
                   Array.from(e.target.selectedOptions).map((option) =>
@@ -94,13 +102,11 @@ const criarProduto = () => {
               }
               id={styles.select}
             >
-              
               {categorias.map((item) => (
-                <option value={item.categoriaIds} key={item.categoriaIds}>
+                <option value={item.categoriaId} key={item.categoriaId}>
                   {item.nome}
                 </option>
               ))}
-
             </select>
             <Link href="/login" id={styles.adicionarC}>
               Adicionar categoria

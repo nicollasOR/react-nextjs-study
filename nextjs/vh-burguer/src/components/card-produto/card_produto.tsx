@@ -23,9 +23,9 @@ const CardProduto = ({titulo, descricao, img, preco, produtoId} : Produto) => {
                     <p>{descricao}</p>
                     <div className={style.botoes}>
                         <span>{formatarPreco(preco)}</span>
-                        <button><FontAwesomeIcon icon={faCircleInfo} className={style.icone_botao} /></button>
-                        <button><FontAwesomeIcon icon={faPenToSquare} className={style.icone_botao}/></button>
-                        <button><FontAwesomeIcon icon={faTrashCan}    className={style.icone_botao}/></button>
+                        <Link href={"/historico/" + produtoId}><button><FontAwesomeIcon icon={faCircleInfo} className={style.icone_botao} /></button></Link>
+                        <Link href={"/historico/" + produtoId}><button><FontAwesomeIcon icon={faPenToSquare} className={style.icone_botao}/></button></Link>
+                        <Link href={"/historico/" + produtoId}><button><FontAwesomeIcon icon={faTrashCan}    className={style.icone_botao}/></button></Link>
                     </div>
                 </li>
     )

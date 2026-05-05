@@ -21,3 +21,8 @@ export async function listarCategoriaService() {
     throw new Error(error.response.data);
   }
 }
+
+export async function listarCategoriaPorId()
+{
+  
+}

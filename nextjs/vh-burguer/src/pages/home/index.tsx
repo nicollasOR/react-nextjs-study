@@ -2,7 +2,7 @@ import Header from "../../components/header/header"
 import Footer from "../../components/footer/footer"
 import styles from './home.module.css'
 import ListaProduto from "@/components/lista-produto/Lista_produto"
-
+import Link from "next/link"
 
 const Home = () => {
     return (

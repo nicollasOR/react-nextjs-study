@@ -5,7 +5,7 @@ type Produto ={
     descricao: string,
     imagem: File | null ,
     preco: string,
-    categoriaIds:  number[],
+    categoriasIds:  number[],
     imagemURL: string
 }
 
@@ -15,16 +15,21 @@ export async function cadastrarProduto(dados: Produto){
 {
     const formData = new FormData();
 
-    formData.append("Nome", dados.nome);
-    formData.append("Preco", dados.preco);
-    formData.append("Descricao", dados.descricao);
+    formData.append("nome", dados.nome);
+    formData.append("preco", dados.preco);
+    formData.append("descricao", dados.descricao);
     if(dados.imagem)
-        formData.append("Imagem", dados.imagem);
+        formData.append("imagem", dados.imagem);
 
-    dados.categoriaIds.forEach((id) => 
+    dados.categoriasIds.forEach((id) => 
     {
-        formData.append("CategoriasIds", id.toString());
+        formData.append("categoriasIds", id.toString());
     })
+    console.log(dados.nome)
+    console.log(dados.preco)
+    console.log(dados.descricao)
+    console.log(dados.imagem)
+    console.log(dados.categoriasIds)
     await api.post("Produto", {formData})
     console.log("deu certo");
 }
@@ -48,6 +53,7 @@ export async function listarProduto(){
         }))
         return produtosLink
     }
+
 
     
 

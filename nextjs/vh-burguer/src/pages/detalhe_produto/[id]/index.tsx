@@ -2,8 +2,10 @@ import Sub_header from '@/components/sub-header/sub_header';
 import styles from './detalhe_produto.module.css'
 import Footer from '@/components/footer/footer';
 import { useState, useEffect } from 'react';
-import { ListarProdutoPorId } from '../../api/produtoService';
+import { listarProduto, ListarProdutoPorId } from '../../api/produtoService';
 import { useParams } from 'next/navigation';
+import { listarCategoriaService } from '@/pages/api/categoriaService';
+import { formatarPreco } from '@/utils/formatacao';
 
 
 interface Produto{
@@ -12,12 +14,29 @@ interface Produto{
     descricao: string,
     preco: number,
     imagemURL: string,
+    categorias: string[],
+    categoriaIds: number[]
+}
+
+interface Categoria {
+  categoriaIds: number;
+  nome: string;
 }
 
 const detalhe_Produto = () => {
 
     const[produtos, setProdutos] = useState<Produto>();
-    const {id} = useParams()
+    const [categorias, setCategoria] = useState<Categoria[]>([]);
+    
+      async function listarCategoriaEmProduto() {
+        const list = await listarCategoriaService();
+        setCategoria(list.data);
+      }
+
+    const params = useParams();
+
+    const id = params?.id;
+
 
     async function listarProduto(){
         try{
@@ -33,8 +52,16 @@ const detalhe_Produto = () => {
     }
 
     useEffect(() =>{
-        listarProduto();
-    }, [])
+        if(!id) return;
+        setTimeout(() =>{
+            listarProduto();
+        }, 1000)
+        listarProduto()
+    }, [id])
+
+      useEffect(() => {
+    listarCategoriaEmProduto();
+  }, []);
 
     return(
 
@@ -42,19 +69,21 @@ const detalhe_Produto = () => {
         <Sub_header/>
 
         <article className={`${styles.article} layout_guide`}>
-            <h1 id={styles.h1}>Detalhes do X-Bacon</h1>
+            {produtos ? (
+                <>
+                            <h1 id={styles.h1}>Detalhes do {produtos.nome}</h1>
             <img src="../imgs/hamburguerExemplo.png" id={styles.img} alt="" />
             <section className={styles.produto_detalhes}>
                 <aside className={styles.lado_esq}>
                     <div id={styles.lado_sup}>
                     <h2 className={styles.h2}>Nome do Produto</h2>
-                    <p >Monstro</p>
+                    <p>{produtos.nome}</p>
                     </div>
 
                     <div id={styles.lado_infer}>
-                    <h2 className={styles.h2}>Detalhes do X-Bacon</h2>
-                    <p >
-                        Um pão brioche macio segura a fera: duas (ou três) carnes altas e suculentas, queijo cheddar derretido escorrendo pelas laterais, bacon crocante, cebola caramelizada no ponto adocicado, alface fresca, tomate e um molho especial intenso que amarra tudo. Para completar o ataque, uma camada extra de onion rings ou molho defumado que transforma cada mordida numa explosão.
+                    <h2 className={styles.h2}>Detalhes do {produtos.nome}</h2>
+                    <p>
+                        {produtos.descricao}
                     </p>
                     </div>
                 </aside>
@@ -62,22 +91,28 @@ const detalhe_Produto = () => {
                 <aside className={styles.lado_dir}>
                     <div id={styles.lado_sup}>
                     <h2 className={styles.h2}>Preço (R$)</h2>
-                    <p >R$ 35,00</p>
+                    <p >{formatarPreco(produtos.preco)}</p>
                     </div>
 
                     <div id={styles.lado_infer}>
                     <h2 className={styles.h2}>Categoria</h2>
                     <ul id={styles.lista}>
-                    <li>Premium</li>
-                    <li>Artesanal</li>
+                        {produtos.categorias.map((item) => (
+                            <li>
+                                {item}
+                            </li>
+                        ))}
                     </ul>
-{/* className={styles.texto_p} */}
                     </div>
                 </aside>
 
 
                 
             </section>
+                </>
+            ) :(<p> Carregando produto..</p>)}
+
+            
         </article>
 
         <Footer></Footer>

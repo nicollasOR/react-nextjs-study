@@ -1,74 +1,99 @@
 import DataRow from "@/components/data-row/dataRow";
 import Footer from "@/components/footer/footer";
 import Sub_header from "@/components/sub-header/sub_header";
-import styles from './historico.module.css'
+import styles from "./historico.module.css";
 import Toast from "@/components/toast/toast";
 import { useState, useEffect } from "react";
 import { listarLogs } from "@/pages/api/logService";
 import { useParams } from "next/navigation";
 
 type historicoAlteracao = {
-    logId: number,
-    dataAlteracao: string,
-    nomeAnterior: string,
-    precoAnterior: number
-}
+  logId: number;
+  dataAlteracao: string;
+  nomeAnterior: string;
+  precoAnterior: number;
+};
 const historico = () => {
-    
-    const[historico, setHistorico] = useState<historicoAlteracao[]>([])
+  const [historico, setHistorico] = useState<historicoAlteracao[] | null>(null);
 
-    const params = useParams()
-    const id = params?.id;
+  const params = useParams();
+  const id = params?.id;
 
-
-
-    async function listarHistorico() 
-    {
-        try 
-        {
-            const lista = await listarLogs(Number(id));
-            setHistorico(lista)
-        }
-
-        catch(error : any){
-            error(error.message)
-        }
+  async function listarHistorico() {
+    try {
+      const lista = await listarLogs(Number(id));
+      setHistorico(lista);
+    } catch (error: any) {
+      error(error.message);
     }
-    
-    return(
-        <>
-        <Toast/>
-        <Sub_header/>
-        <main className={styles.main_historico}>
-            <h1 className={styles.titulo_historico}>Histórico de alterações</h1>
-            <table className={styles.tabela_historico}>
+  }
+
+  useEffect(() => {
+    if (!id) return;
+
+    setTimeout(() => {
+      listarLogs(Number(id));
+    }, 2000);
+    listarLogs(Number(id));
+  }, [id]);
+
+  return (
+    <>
+      <Toast />
+      <Sub_header />
+      <main className={`${styles.main_historico} layout_guide`}>
+        <h1 className={styles.titulo_historico}>Histórico de alterações</h1>
+        {historico === null ? (
+          <p className={styles.mensagem}>Carregando histórico...</p>
+        ) : historico.length === 0 ? (
+          <p className={styles.mensagem}>
+            O produto não contém histórico de alterações
+          </p>
+        ) : (
+          <table className={styles.tabela_historico}>
             <thead className={styles.tabela_cabeca}>
-            <tr>
+              <tr>
                 <th>Data da alteração</th>
                 <th>Nome anteriror</th>
                 <th>Preço anterior</th>
-            </tr>
+              </tr>
             </thead>
             <tbody>
-                <DataRow 
-                dataAlteracao="" 
-                nomeAnterior="" 
-                precoAnterior={55}></DataRow>
-                <DataRow 
-                dataAlteracao="" 
-                nomeAnterior="" 
-                precoAnterior={55}></DataRow>
-                <DataRow 
-                dataAlteracao="" 
-                nomeAnterior="" 
-                precoAnterior={55}></DataRow>
+              {historico.map((item) => (
+                <DataRow
+                  key={item.logId}
+                  dataAlteracao={item.dataAlteracao}
+                  nomeAnterior={item.nomeAnterior}
+                  precoAnterior={item.precoAnterior}
+                />
+              ))}
             </tbody>
-            </table>
-        </main>
-        <Footer></Footer>
-
-        </>
-    )
-}
+          </table>
+        )}
+      </main>
+      <Footer></Footer>
+    </>
+  );
+};
 
 export default historico;
+
+/*
+
+            <DataRow
+              dataAlteracao=""
+              nomeAnterior=""
+              precoAnterior={55}
+            ></DataRow>
+            <DataRow
+              dataAlteracao=""
+              nomeAnterior=""
+              precoAnterior={55}
+            ></DataRow>
+            <DataRow
+              dataAlteracao=""
+              nomeAnterior=""
+              precoAnterior={55}
+            ></DataRow>
+
+*/
