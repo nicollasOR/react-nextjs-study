@@ -1,0 +1,74 @@
+import DataRow from "@/components/data-row/dataRow";
+import Footer from "@/components/footer/footer";
+import Sub_header from "@/components/sub-header/sub_header";
+import styles from './historico.module.css'
+import Toast from "@/components/toast/toast";
+import { useState, useEffect } from "react";
+import { listarLogs } from "@/pages/api/logService";
+import { useParams } from "next/navigation";
+
+type historicoAlteracao = {
+    logId: number,
+    dataAlteracao: string,
+    nomeAnterior: string,
+    precoAnterior: number
+}
+const historico = () => {
+    
+    const[historico, setHistorico] = useState<historicoAlteracao[]>([])
+
+    const params = useParams()
+    const id = params?.id;
+
+
+
+    async function listarHistorico() 
+    {
+        try 
+        {
+            const lista = await listarLogs(Number(id));
+            setHistorico(lista)
+        }
+
+        catch(error : any){
+            error(error.message)
+        }
+    }
+    
+    return(
+        <>
+        <Toast/>
+        <Sub_header/>
+        <main className={styles.main_historico}>
+            <h1 className={styles.titulo_historico}>Histórico de alterações</h1>
+            <table className={styles.tabela_historico}>
+            <thead className={styles.tabela_cabeca}>
+            <tr>
+                <th>Data da alteração</th>
+                <th>Nome anteriror</th>
+                <th>Preço anterior</th>
+            </tr>
+            </thead>
+            <tbody>
+                <DataRow 
+                dataAlteracao="" 
+                nomeAnterior="" 
+                precoAnterior={55}></DataRow>
+                <DataRow 
+                dataAlteracao="" 
+                nomeAnterior="" 
+                precoAnterior={55}></DataRow>
+                <DataRow 
+                dataAlteracao="" 
+                nomeAnterior="" 
+                precoAnterior={55}></DataRow>
+            </tbody>
+            </table>
+        </main>
+        <Footer></Footer>
+
+        </>
+    )
+}
+
+export default historico;
