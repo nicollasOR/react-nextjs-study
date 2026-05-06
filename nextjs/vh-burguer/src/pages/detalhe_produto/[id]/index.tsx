@@ -72,7 +72,7 @@ const detalhe_Produto = () => {
             {produtos ? (
                 <>
                             <h1 id={styles.h1}>Detalhes do {produtos.nome}</h1>
-            <img src="../imgs/hamburguerExemplo.png" id={styles.img} alt="" />
+            <img src={produtos.imagemURL} id={styles.img} alt="" />
             <section className={styles.produto_detalhes}>
                 <aside className={styles.lado_esq}>
                     <div id={styles.lado_sup}>

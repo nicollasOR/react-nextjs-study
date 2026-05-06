@@ -39,7 +39,7 @@ const historico = () => {
 
   return (
     <>
-      <Toast />
+      <Toast/>
       <Sub_header />
       <main className={`${styles.main_historico} layout_guide`}>
         <h1 className={styles.titulo_historico}>Histórico de alterações</h1>

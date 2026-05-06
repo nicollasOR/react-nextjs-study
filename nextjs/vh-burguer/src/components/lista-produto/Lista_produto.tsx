@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import CardProduto from '../card-produto/card_produto';
 import styles from './listaProduto.module.css'
-import { listarProduto } from '@/pages/api/produtoService';
+import { excluirProduto, listarProduto } from '@/pages/api/produtoService';
+import { erro, notificacao, ToastconfirmarExclusao } from '@/utils/toast';
 
 interface Produto{
     produtoID: number,
@@ -9,17 +10,45 @@ interface Produto{
     descricao: string,
     preco: number,
     imagemURL: string,
+    statusProduto : boolean
 }
+
+// const [produtos, setProdutos] = useState<Produto[]>([])
+
 
 
 const ListaProduto = () => {
-    const [produto, setProduto] = useState<Produto[]>([])
+    const [produtos, setProdutos] = useState<Produto[]>([])
+
+
+    async function confirmarExclusão(produtoID: number){
+    
+    ToastconfirmarExclusao(async () => {
+        try{
+            await excluirProduto(produtoID)
+            setProdutos((listaAtual) =>
+                listaAtual.map((produtos2) =>
+                    produtos2.produtoID === produtoID
+                    ? {...produtos2, statusProduto: false}
+                    : produtos2
+                )    
+            )
+            notificacao("produto inativado")
+            listar();
+        }
+
+        catch(error: any){
+            erro(error.message)
+
+        }
+    })
+}
+
 
     async function listar(){
         try{
             const lista = await listarProduto();
-            setProduto(lista)
-            console.log(lista)
+            setProdutos(lista)
         }
 
         catch(error: any){
@@ -45,8 +74,8 @@ const ListaProduto = () => {
 
             <ul className={styles.hamburgueres_lado_sup}>
                 {
-                produto.length > 0 ?
-                 produto.map
+                produtos.length > 0 ?
+                 produtos.map
                  ((item) => (
                  <CardProduto 
                     key={item.produtoID} 
@@ -54,7 +83,9 @@ const ListaProduto = () => {
                     titulo={item.nome}    
                     descricao={item.descricao} 
                     preco={item.preco} 
-                    img={item.imagemURL}/>
+                    img={item.imagemURL}
+                    onDelete={confirmarExclusão}
+                    />
                 ))
                                     :(
                                         <p> carma, esta carregando meu fio</p>

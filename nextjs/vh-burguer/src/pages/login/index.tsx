@@ -31,7 +31,7 @@ const Login = () => {
     return (
         
         <>
-            <ToastContainer/>
+            {/* <ToastContainer/> */}
             <main className={styles.main}>
                 <img src="../imgs/hamburguer_login.png" alt="Hambúrguer com ingredientes flutuando em camadas sobre fundo escuro."/>
                 <div className={styles.campo_login}>
