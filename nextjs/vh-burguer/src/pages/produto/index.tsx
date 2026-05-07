@@ -3,14 +3,14 @@ import styles from "./produto.module.css";
 import Footer from "@/components/footer/footer";
 import Link from "next/link";
 import { toast, ToastContainer } from "react-toastify";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { listarCategoriaService } from "../api/categoriaService";
 import { cadastrarProduto, editarProduto, ListarProdutoPorId } from "../api/produtoService";
 import Toast from "@/components/toast/toast";
 import { notificacao, erro } from "@/utils/toast";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/router";
-
+import { verificarAutenticacao } from "@/utils/autenticacao";
 interface Categoria {
   categoriaId: number;
   nome: string;
@@ -33,8 +33,8 @@ const CriarProduto = () => {
   const [categoriasSelecionadas, setCategoriaSelecionadas] = useState<number[]>(
     [],
   );
+  const [estaAutenticado, setEstaAutenticado] = useState(false)
   const [imagemURL, setImagemURL] = useState<string>("");
-  // const [telaEditar, setTelaEditar] = useState<boolean>();
 
   const router = useRouter();
   const id = router.query.id;
@@ -86,6 +86,12 @@ const CriarProduto = () => {
 
   //quando o produto for finalizado a funcao listarCategoriaService entrará em ação
   useEffect(() => {
+
+    if(!verificarAutenticacao())
+        router.push("/home")
+      else
+        setEstaAutenticado(true)
+
     listarCategoriaEmProduto();
 
     // if(!id)
@@ -98,6 +104,9 @@ const CriarProduto = () => {
     //   carregarInformacoes()
     // }
   }, []);
+
+  if(!estaAutenticado)
+    return null;
 
   return (
     <>
@@ -144,8 +153,7 @@ const CriarProduto = () => {
               onChange={(e) =>
                 setCategoriaSelecionadas(
                   Array.from(e.target.selectedOptions).map((option) =>
-                    Number(option.value),
-                  ),
+                    Number(option.value))
                 )
               }
               id={styles.select}

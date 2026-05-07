@@ -41,8 +41,8 @@ const detalhe_Produto = () => {
     async function listarProduto(){
         try{
             const response = await ListarProdutoPorId(Number(id))
-            console.log(response)
-            setProdutos(response)
+            // console.log(response)
+            setProdutos(response.data)
         }
 
         catch(error:any)
