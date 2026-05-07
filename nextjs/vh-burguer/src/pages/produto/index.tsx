@@ -16,25 +16,30 @@ interface Categoria {
   nome: string;
 }
 
-const criarProduto = () => {
-  const router = useRouter();
-  const id = router.query.id;
+const CriarProduto = () => {
+
 
   // let telaEditar = false
   // id
   // ? telaEditar = true
   // : telaEditar = false
 
-  const [nome, setNome] = useState<string>("");
   const [categorias, setCategoria] = useState<Categoria[]>([]);
+
+  const [nome, setNome] = useState<string>("");
   const [descricao, setDescricao] = useState<string>("");
   const [preco, setPreco] = useState<string>("");
   const [imagem, setImg] = useState<File | null>(null);
-  const [categoriaSelecionada, setCategoriaSelecionadas] = useState<number[]>(
+  const [categoriasSelecionadas, setCategoriaSelecionadas] = useState<number[]>(
     [],
   );
   const [imagemURL, setImagemURL] = useState<string>("");
-  const [telaEditar, setTelaEditar] = useState<boolean>();
+  // const [telaEditar, setTelaEditar] = useState<boolean>();
+
+  const router = useRouter();
+  const id = router.query.id;
+  let telaEditar = id ? true : false;
+
 
   async function listarCategoriaEmProduto() {
     const list = await listarCategoriaService();
@@ -55,21 +60,21 @@ const criarProduto = () => {
   }
 
 
-  async function Cadastrar(e: React.FormEvent<HTMLFormElement>) {
+  async function salvarProduto(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       const dados = {
         nome,
         descricao,
         preco,
-        imagem: imagem,
-        categoriasIds: categoriaSelecionada,
+        imagem, //: imagem,
+        categoriasIds: categoriasSelecionadas,
       };
 
       // await cadastrarProduto(dados);
       if (telaEditar) {
         await editarProduto(Number(id), dados);
-        notificacao("Produto cadastrado");
+        notificacao("Produto editado!");
       } else {
         await cadastrarProduto(dados)
         notificacao("Produto cadastrado");
@@ -83,17 +88,24 @@ const criarProduto = () => {
   useEffect(() => {
     listarCategoriaEmProduto();
 
-    if(!id)
-      carregarInformacoes()
+    // if(!id)
+      carregarInformacoes();
+    
+    // else
+    // //*
+    // {
+    //   setTelaEditar(true)
+    //   carregarInformacoes()
+    // }
   }, []);
 
   return (
     <>
-      <Toast />
       <Sub_header />
+      <Toast />
       <main id={styles.main} className="layout_guide">
         <h1>{telaEditar ? "Editar Produto" : "Criar Produto"}</h1>
-        <form id={styles.formulario} onSubmit={Cadastrar}>
+        <form id={styles.formulario} onSubmit={salvarProduto}>
           <div className={styles.inserir_dados}>
             <label htmlFor="nome">Nome do produto</label>
             <input
@@ -127,7 +139,7 @@ const criarProduto = () => {
           <div className={styles.inserir_dados} id={styles.selectDiv}>
             <label htmlFor="categorias">Categoria</label>
             <select
-            value={categoriaSelecionada.map(String)}
+            value={categoriasSelecionadas.map(String)}
               multiple
               onChange={(e) =>
                 setCategoriaSelecionadas(
@@ -173,4 +185,4 @@ const criarProduto = () => {
   );
 };
 
-export default criarProduto;
+export default CriarProduto;

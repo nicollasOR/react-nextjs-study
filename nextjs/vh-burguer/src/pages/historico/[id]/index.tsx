@@ -13,7 +13,7 @@ type historicoAlteracao = {
   nomeAnterior: string;
   precoAnterior: number;
 };
-const historico = () => {
+const Historico = () => {
   const [historico, setHistorico] = useState<historicoAlteracao[] | null>(null);
 
   const params = useParams();
@@ -35,6 +35,7 @@ const historico = () => {
       listarLogs(Number(id));
     }, 2000);
     listarLogs(Number(id));
+    listarHistorico() //*
   }, [id]);
 
   return (
@@ -76,7 +77,7 @@ const historico = () => {
   );
 };
 
-export default historico;
+export default Historico;
 
 /*
 

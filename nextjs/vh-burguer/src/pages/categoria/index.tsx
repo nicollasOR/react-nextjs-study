@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 
 
-const criarCategoria = () =>{
+const CriarCategoria = () =>{
     const [categoria, setCategoria] = useState<string>("");
 
     const notificacao = (msg: string) => toast.success(msg);
@@ -51,4 +51,4 @@ const criarCategoria = () =>{
     )
 }
 
-export default criarCategoria;
+export default CriarCategoria;
