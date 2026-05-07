@@ -19,36 +19,6 @@ interface ProdutoListagem {
 }
 // mudar categoriasIds na API pois está categoriaIds
 
-export async function cadastrarProduto(dados: ProdutoFormulario) {
-
-    try {
-        const formData = new FormData();
-
-        formData.append("nome", dados.nome);
-        formData.append("preco", dados.preco);
-        formData.append("descricao", dados.descricao);
-        if (dados.imagem)
-            formData.append("imagem", dados.imagem);
-
-        dados.categoriasIds.forEach((id) => {
-            formData.append("categoriasIds", id.toString());
-        })
-        // console.log(dados.nome)
-        // console.log(dados.preco)
-        // console.log(dados.descricao)
-        // console.log(dados.imagem)
-        // console.log(dados.categoriasIds)
-        await api.post("Produto", { formData })
-        console.log("deu certo");
-    }
-
-    catch (error: any) {
-        throw new Error(error.response.data)
-    }
-
-}
-
-
 export class produtoDTO_tsx {
 
     static toFormData(dados: ProdutoFormulario): FormData {
@@ -78,6 +48,36 @@ export class produtoDTO_tsx {
         };
     }
 }
+
+export async function cadastrarProduto(dados: ProdutoFormulario) {
+
+    try {
+        const formData = produtoDTO_tsx.toFormData(dados)
+                // formData.append("nome", dados.nome);
+                // formData.append("preco", dados.preco);
+                // formData.append("descricao", dados.descricao);
+                // if (dados.imagem)
+                //     formData.append("imagem", dados.imagem);
+        
+                // dados.categoriasIds.forEach((id) => {
+                //     formData.append("categoriasIds", id.toString());
+                // })
+                // // console.log(dados.nome)
+                // // console.log(dados.preco)
+                // // console.log(dados.descricao)
+                // // console.log(dados.imagem)
+                // // console.log(dados.categoriasIds)
+        await api.post("Produto", formData )
+        console.log("deu certo");
+    }
+
+    catch (error: any) {
+        throw new Error(error.response.data)
+    }
+
+}
+
+
 
 export async function listarProduto() {
     try {
@@ -112,7 +112,7 @@ export async function ListarProdutoPorId(id: number) {
         const response = await api.get("Produto/" + id);
 
         const produtosLink = {
-            ...response,
+            ...response.data,
             imagemURL: `${api.defaults.baseURL}${response.data.imagemURL}`
         }
         return produtosLink
@@ -144,18 +144,7 @@ export async function excluirProduto(produtoId: number) {
 
 export async function editarProduto(produtoId: number, dados: ProdutoFormulario) {
     try {
-        // const formData = new FormData();
 
-        // formData.append("nome", dados.nome);
-        // formData.append("preco", dados.preco);
-        // formData.append("descricao", dados.descricao);
-        // if (dados.imagem)
-        //     formData.append("imagem", dados.imagem);
-
-        // dados.categoriasIds.forEach((id) => {
-        //     formData.append("categoriasIds", id.toString());
-        // })
-        //* ver se funciona neh
 
         const formData = produtoDTO_tsx.toFormData(dados)
         await api.put("Produto/" + produtoId, formData)
