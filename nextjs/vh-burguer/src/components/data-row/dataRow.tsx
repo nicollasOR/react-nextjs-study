@@ -6,7 +6,7 @@ type dados ={
     precoAnterior: number
 }
 
-const dataRow = ({dataAlteracao, nomeAnterior, precoAnterior} : dados) => {
+const DataRow = ({dataAlteracao, nomeAnterior, precoAnterior} : dados) => {
     return(
             <tr>
                 <td>{dataAlteracao}</td>
@@ -16,4 +16,4 @@ const dataRow = ({dataAlteracao, nomeAnterior, precoAnterior} : dados) => {
     )
 }
 
-export default dataRow;
+export default DataRow;

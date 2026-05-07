@@ -25,7 +25,7 @@ const CardProduto = ({titulo, descricao, img, preco, produtoId, onDelete} : Prod
                     <p>{descricao}</p>
                     <div className={style.botoes}>
                         <span>{formatarPreco(preco)}</span>
-                        <Link href={"/historico/" + produtoId}><button onClick={() => onDelete(produtoId)}><FontAwesomeIcon icon={faCircleInfo} className={style.icone_botao} /></button></Link>
+                        <Link href={"/historico/" + produtoId}><button><FontAwesomeIcon icon={faCircleInfo} className={style.icone_botao} /></button></Link>
                         <Link href={"/produto?id=" + produtoId}><button><FontAwesomeIcon icon={faPenToSquare} className={style.icone_botao}/></button></Link>
                         <button onClick={() => onDelete(produtoId)}><FontAwesomeIcon icon={faTrashCan}    className={style.icone_botao}/></button>
                     </div>
