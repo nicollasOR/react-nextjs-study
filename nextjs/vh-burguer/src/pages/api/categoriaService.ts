@@ -3,7 +3,6 @@ export async function cadastrarCategoria(nome: string) {
   try {
     // const response =
     await api.post("Categoria", { nome });
-    console.log("eba deu certo");
   } 
   catch (error: any) 
   {
@@ -14,7 +13,6 @@ export async function cadastrarCategoria(nome: string) {
 export async function listarCategoriaService() {
   try {
     const response = await api.get("Categoria");
-    console.log(response.data)
     return response;
   } 
   catch (error: any) {
