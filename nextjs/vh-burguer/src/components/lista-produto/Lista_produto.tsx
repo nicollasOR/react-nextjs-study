@@ -69,11 +69,6 @@ const ListaProduto = () => {
       {estaAutenticado && (
       <div className={styles.botoes}>
         <div className={styles.filtros}>
-        {/* <button>
-          {" "}
-          Filtrar <img src="../imgs/edicoesF.svg" id={styles.editar} alt="" />
-        </button> */}
-
         <select name="" id="" value={ordem} onChange={(e) => setOrdem(e.target.value)}>Filtrar
             <option value="todos">Todos</option>
             <option value="menor_valor">Menor valor</option>
@@ -95,9 +90,8 @@ const ListaProduto = () => {
       )}
 
       <ul className={styles.hamburgueres_lado_sup}>
-        {produtos.length > 0 ? (
-          produtosFiltrados.map((item) => (
-            <CardProduto
+        {produtosFiltrados.length > 0 ? produtosFiltrados.map((item) =>(
+                      <CardProduto
               key={item.produtoID}
               produtoId={item.produtoID}
               titulo={item.nome}
@@ -107,7 +101,7 @@ const ListaProduto = () => {
               onDelete={confirmarExclusão}
               usuarioAutenticado={estaAutenticado}
             />
-          ))
+        )
         ) : (
           <p> carma, esta carregando meu fio</p>
         )}

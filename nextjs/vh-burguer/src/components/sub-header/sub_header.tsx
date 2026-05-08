@@ -4,7 +4,7 @@ const Sub_header = () => {
     return(
         <>
         <header id={styles.header}>
-            <img src="../imgs/Logo_footer.svg" id={styles.img_footer} alt="" />
+            <Link href="/home" id={styles.links}><img src="../imgs/Logo_footer.svg" id={styles.img_footer} alt="" /></Link>
             <Link href="/home" id={styles.links}>Voltar</Link>
         </header>
         
