@@ -1,69 +1,72 @@
-import Footer from '@/components/footer/footer';
-import style from './categoria.module.css'
-import Sub_header from '@/components/sub-header/sub_header';
-import {cadastrarCategoria} from '../api/categoriaService';
-import { useState, useEffect } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import { useRouter } from 'next/router';
-import { verificarAutenticacao } from '@/utils/autenticacao';
+import Footer from "@/components/footer/footer";
+import style from "./categoria.module.css";
+import Sub_header from "@/components/sub-header/sub_header";
+import { cadastrarCategoria } from "../api/categoriaService";
+import { useState, useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { useRouter } from "next/router";
+import { verificarAutenticacao } from "@/utils/autenticacao";
 
-const CriarCategoria = () =>{
-      const router = useRouter();
-    const [categoria, setCategoria] = useState<string>("");
-  const [estaAutenticado, setEstaAutenticado] = useState(false)
+const CriarCategoria = () => {
+  const router = useRouter();
+  const id = router.query.id
+  let telaEditar = id 
+  ? true : false
+  const [categoria, setCategoria] = useState<string>("");
+  const [estaAutenticado, setEstaAutenticado] = useState(false);
+
+  const notificacao = (msg: string) => toast.success(msg);
+  const error = (msg: string) => toast.error(msg);
+
+  async function cadastrar(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    try {
+      await cadastrarCategoria(categoria);
+      notificacao("Cadastro realizado com sucesso");
+    } catch (errorC: any) {
+      error(errorC.message);
+    }
+  }
+
+  useEffect(() => {
+    if (!verificarAutenticacao()) 
+        router.push("/home");
+    else 
+        setEstaAutenticado(true);
+    
+  }, []);
 
 
-    const notificacao = (msg: string) => toast.success(msg);
-    const error = (msg: string) => toast.error(msg);
+  if (!estaAutenticado) 
+    return null;
 
-    async function cadastrar(e: React.FormEvent<HTMLFormElement>){
-        e.preventDefault();
-        try{
-        await cadastrarCategoria(categoria);
-        notificacao("Cadastro realizado com sucesso");
-        }
-
-        
-        catch(errorC: any)
-        {
-            error(errorC.message);
-        }
-    };
-
-    useEffect(() => {
-        if(!verificarAutenticacao)
-            useRouter().push("/home")
-        else
-        setEstaAutenticado(true)
-
-    }, [])
-
-    if(!estaAutenticado)
-        return null
-
-    return(
-        <>
-        <ToastContainer/>
-        <Sub_header/>
-        <article id={style.main} className="layout_guide">
-            <h1> Criar categoria</h1>
-                <form action="" onSubmit={cadastrar}>
-                    <div id={style.form}>
-                    <label htmlFor="nome">Nome categoria</label>
-                    <input type="text" name='nome' required placeholder='Premium'
-                        value={categoria} onChange={(e) => setCategoria(e.target.value)}
-                    />
-                    </div>
-                    <div className={style.enviar_botoes}>
-                        <button>Cancelar</button>
-                        <button>Salvar</button>
-                    </div>
-                </form>
-        </article>
-        <Footer/>
-        
-        </>
-    )
-}
+  return (
+    <>
+      <ToastContainer />
+      <Sub_header />
+      <article id={style.main} className="layout_guide">
+        <h1> Criar categoria</h1>
+        <form action="" onSubmit={cadastrar}>
+          <div id={style.form}>
+            <label htmlFor="nome">Nome categoria</label>
+            <input
+              type="text"
+              name="nome"
+              required
+              placeholder="Premium"
+              value={categoria}
+              onChange={(e) => setCategoria(e.target.value)}
+            />
+          </div>
+          <div className={style.enviar_botoes}>
+            <button>Cancelar</button>
+            <button>Salvar</button>
+          </div>
+        </form>
+      </article>
+      <Footer />
+    </>
+  );
+};
 
 export default CriarCategoria;

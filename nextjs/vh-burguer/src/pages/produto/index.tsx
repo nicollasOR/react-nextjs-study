@@ -5,7 +5,11 @@ import Link from "next/link";
 import { toast, ToastContainer } from "react-toastify";
 import { use, useEffect, useState } from "react";
 import { listarCategoriaService } from "../api/categoriaService";
-import { cadastrarProduto, editarProduto, ListarProdutoPorId } from "../api/produtoService";
+import {
+  cadastrarProduto,
+  editarProduto,
+  ListarProdutoPorId,
+} from "../api/produtoService";
 import Toast from "@/components/toast/toast";
 import { notificacao, erro } from "@/utils/toast";
 import { useParams } from "next/navigation";
@@ -17,13 +21,6 @@ interface Categoria {
 }
 
 const CriarProduto = () => {
-
-
-  // let telaEditar = false
-  // id
-  // ? telaEditar = true
-  // : telaEditar = false
-
   const [categorias, setCategoria] = useState<Categoria[]>([]);
 
   const [nome, setNome] = useState<string>("");
@@ -33,32 +30,27 @@ const CriarProduto = () => {
   const [categoriasSelecionadas, setCategoriaSelecionadas] = useState<number[]>(
     [],
   );
-  const [estaAutenticado, setEstaAutenticado] = useState(false)
+  const [estaAutenticado, setEstaAutenticado] = useState(false);
   const [imagemURL, setImagemURL] = useState<string>("");
 
   const router = useRouter();
   const id = router.query.id;
   let telaEditar = id ? true : false;
 
-
   async function listarCategoriaEmProduto() {
     const list = await listarCategoriaService();
     setCategoria(list.data);
   }
 
-  async function carregarInformacoes()
-  {
-    if(!id)
-        return
+  async function carregarInformacoes() {
+    if (!id) return;
 
-    const produto = await ListarProdutoPorId(Number(id))
-    setNome(produto.nome)
-    setDescricao(produto.descricao)
-    setPreco(produto.preco)
-    setCategoriaSelecionadas(produto.categoriasIds)
-    
+    const produto = await ListarProdutoPorId(Number(id));
+    setNome(produto.nome);
+    setDescricao(produto.descricao);
+    setPreco(produto.preco);
+    setCategoriaSelecionadas(produto.categoriasIds);
   }
-
 
   async function salvarProduto(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -76,7 +68,7 @@ const CriarProduto = () => {
         await editarProduto(Number(id), dados);
         notificacao("Produto editado!");
       } else {
-        await cadastrarProduto(dados)
+        await cadastrarProduto(dados);
         notificacao("Produto cadastrado");
       }
     } catch (error: any) {
@@ -86,27 +78,17 @@ const CriarProduto = () => {
 
   //quando o produto for finalizado a funcao listarCategoriaService entrará em ação
   useEffect(() => {
-
-    if(!verificarAutenticacao())
-        router.push("/home")
-      else
-        setEstaAutenticado(true)
-
+    if (!router.isReady) return;
+    if (!verificarAutenticacao()) {
+      router.push("/home");
+      return;
+    }
+    setEstaAutenticado(true);
     listarCategoriaEmProduto();
+    carregarInformacoes();
+  }, [router.isReady, id]);
 
-    // if(!id)
-      carregarInformacoes();
-    
-    // else
-    // //*
-    // {
-    //   setTelaEditar(true)
-    //   carregarInformacoes()
-    // }
-  }, []);
-
-  if(!estaAutenticado)
-    return null;
+  if (!estaAutenticado) return null;
 
   return (
     <>
@@ -148,12 +130,13 @@ const CriarProduto = () => {
           <div className={styles.inserir_dados} id={styles.selectDiv}>
             <label htmlFor="categorias">Categoria</label>
             <select
-            value={categoriasSelecionadas.map(String)}
+              value={categoriasSelecionadas.map(String)}
               multiple
               onChange={(e) =>
                 setCategoriaSelecionadas(
                   Array.from(e.target.selectedOptions).map((option) =>
-                    Number(option.value))
+                    Number(option.value),
+                  ),
                 )
               }
               id={styles.select}

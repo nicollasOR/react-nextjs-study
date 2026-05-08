@@ -14,14 +14,14 @@ const Home = () => {
                 <img src="../imgs/foto_de_hamburgueres.png"  alt="" />
                 <div id={styles.nav_links}>
                 <a href="">Chamar atendente</a>
-                <a href="">Ver cardápio</a>
+                <a href="#eu">Ver cardápio</a>
                 </div>
             </section>
 
             <section className={`${styles.destaques} layout_guide`}>
             <article id={styles.lado_esq}>
-                <p>Os queridinhos da galera</p>
-                <h3>MAIS PEDIDOS</h3>
+                <p >Os queridinhos da galera</p>
+                <h3 >MAIS PEDIDOS</h3>
             </article>
                 <div id={styles.lado_dir}>
                     <article id={styles.lado_super}>
