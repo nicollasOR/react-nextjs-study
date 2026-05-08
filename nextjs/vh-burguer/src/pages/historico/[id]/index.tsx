@@ -6,16 +6,23 @@ import Toast from "@/components/toast/toast";
 import { useState, useEffect } from "react";
 import { listarLogs } from "@/pages/api/logService";
 import { useParams } from "next/navigation";
-
+import { verificarAutenticacao } from "@/utils/autenticacao";
+import { useRouter } from "next/router";
 type historicoAlteracao = {
   logId: number;
   dataAlteracao: string;
   nomeAnterior: string;
   precoAnterior: number;
 };
-const Historico = () => {
-  const [historico, setHistorico] = useState<historicoAlteracao[] | null>(null);
 
+
+const Historico = () => {
+
+  const router = useRouter()
+  const ids = router.query.id
+  let telaEditar = ids ? true : false
+  const [historico, setHistorico] = useState<historicoAlteracao[] | null>(null);
+  const [estaAutenticado, setEstaAutenticado] = useState(false)
   const params = useParams();
   const id = params?.id;
 
@@ -29,7 +36,12 @@ const Historico = () => {
   }
 
   useEffect(() => {
-    if (!id) return;
+    if(!verificarAutenticacao())
+        router.push("/home")
+      else
+        setEstaAutenticado(true)
+      
+    if (!ids) return;
 
     setTimeout(() => {
       listarLogs(Number(id));
@@ -37,6 +49,9 @@ const Historico = () => {
     listarLogs(Number(id));
     listarHistorico() //*
   }, [id]);
+
+  if(!estaAutenticado)
+      return null;
 
   return (
     <>
