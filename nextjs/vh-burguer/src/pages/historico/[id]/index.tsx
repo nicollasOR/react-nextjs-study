@@ -57,7 +57,9 @@ const Historico = () => {
     <>
       <Toast/>
       <Sub_header />
-      <main className={`${styles.main_historico} layout_guide`}>
+      <main className={styles.main_historico}>
+      {/* <main className={`${styles.main_historico} layout_guide`}> */}
+        <section className={styles.container_historico}>
         <h1 className={styles.titulo_historico}>Histórico de alterações</h1>
         {historico === null ? (
           <p className={styles.mensagem}>Carregando histórico...</p>
@@ -86,6 +88,7 @@ const Historico = () => {
             </tbody>
           </table>
         )}
+        </section>
       </main>
       <Footer></Footer>
     </>
@@ -94,22 +97,4 @@ const Historico = () => {
 
 export default Historico;
 
-/*
-
-            <DataRow
-              dataAlteracao=""
-              nomeAnterior=""
-              precoAnterior={55}
-            ></DataRow>
-            <DataRow
-              dataAlteracao=""
-              nomeAnterior=""
-              precoAnterior={55}
-            ></DataRow>
-            <DataRow
-              dataAlteracao=""
-              nomeAnterior=""
-              precoAnterior={55}
-            ></DataRow>
-
-*/
+ 

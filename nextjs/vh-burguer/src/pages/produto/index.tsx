@@ -49,7 +49,7 @@ const CriarProduto = () => {
     setNome(produto.nome);
     setDescricao(produto.descricao);
     setPreco(produto.preco);
-    setCategoriaSelecionadas(produto.categoriasIds);
+    setCategoriaSelecionadas(produto.categoriaIds);
   }
 
   async function salvarProduto(e: React.FormEvent<HTMLFormElement>) {
@@ -60,7 +60,7 @@ const CriarProduto = () => {
         descricao,
         preco,
         imagem, //: imagem,
-        categoriasIds: categoriasSelecionadas,
+        categoriaIds: categoriasSelecionadas,
       };
 
       // await cadastrarProduto(dados);
@@ -135,8 +135,8 @@ const CriarProduto = () => {
               onChange={(e) =>
                 setCategoriaSelecionadas(
                   Array.from(e.target.selectedOptions).map((option) =>
-                    Number(option.value),
-                  ),
+                    Number(option.value)
+                  )
                 )
               }
               id={styles.select}

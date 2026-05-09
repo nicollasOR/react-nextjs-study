@@ -5,7 +5,7 @@ type ProdutoFormulario = {
     descricao: string,
     imagem: File | null,
     preco: string,
-    categoriasIds: number[]
+    categoriaIds: number[]
 }
 
 interface ProdutoListagem {
@@ -13,11 +13,11 @@ interface ProdutoListagem {
     descricao: string,
     imagem: File | null,
     preco: string,
-    categoriasIds: number[],
+    categoriaIds: number[],
     imagemURL: string,
     statusProduto: boolean
 }
-// mudar categoriasIds na API pois está categoriaIds
+// mudar categoriaIds na API pois está categoriaIds
 
 export class produtoDTO_tsx {
 
@@ -33,8 +33,8 @@ export class produtoDTO_tsx {
             formData.append("imagem", dados.imagem);
         }
 
-        dados.categoriasIds.forEach((id) => {
-            formData.append("categoriasIds", id.toString());
+        dados.categoriaIds.forEach((id) => {
+            formData.append("categoriaIds", id.toString());
         });
 
         return formData;
@@ -59,14 +59,14 @@ export async function cadastrarProduto(dados: ProdutoFormulario) {
                 // if (dados.imagem)
                 //     formData.append("imagem", dados.imagem);
         
-                // dados.categoriasIds.forEach((id) => {
-                //     formData.append("categoriasIds", id.toString());
+                // dados.categoriaIds.forEach((id) => {
+                //     formData.append("categoriaIds", id.toString());
                 // })
                 // // console.log(dados.nome)
                 // // console.log(dados.preco)
                 // // console.log(dados.descricao)
                 // // console.log(dados.imagem)
-                // // console.log(dados.categoriasIds)
+                // // console.log(dados.categoriaIds)
         await api.post("Produto", formData )
         console.log("deu certo");
     }
