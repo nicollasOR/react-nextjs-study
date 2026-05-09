@@ -78,7 +78,7 @@ const ListaProduto = () => {
         </select>
 
         <label htmlFor="pesquisa">Pesquisa</label>
-        <input type="text"  name="pesquisa" id="" placeholder="Digite o nome do produto"/>
+        <input type="text"  name="pesquisa" id="" value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} placeholder="Digite o nome do produto"/>
         </div>
         <div className={styles.botoes_adm}>
           <button> Todas as promoções </button>
